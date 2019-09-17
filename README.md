@@ -28,15 +28,26 @@ Your Jacket should be ready to go when you installed Jacket as shown instruction
 But if you want to modify or update your config with the latest from our GitHub repository read-on. 
 
 ## 2.00 Download the latest Jackett Server configuration file
-The Jackett settings file is named `ServerConfig.json`. In the event you want to upgrade or overwrite your `ServerConfig.json` you can with these instructions. 
+The Jackett preferences file is named `ServerConfig.json`. In the event you want to upgrade or overwrite your `ServerConfig.json` you can with these instructions. 
 
 With the Proxmox web interface go to `typhoon-01` > `113 (deluge)` > `>_ Shell` and type the following:
 ```
 systemctl stop jackett &&
 sleep 5 &&
-wget  https://raw.githubusercontent.com/ahuacate/deluge/master/deluge-postprocess.sh -P /home/media/.config/deluge &&
-chmod +rx /home/media/.config/deluge/deluge-postprocess.sh &&
-chown 1005:1005 /home/media/.config/deluge/deluge-postprocess.sh &&
-sudo systemctl restart deluge
+wget -q https://raw.githubusercontent.com/ahuacate/jackett/master/ServerConfig.json -O /home/media/.config/Jackett/ServerConfig.json &&
+chown 1005:1005 /home/media/.config/Jackett/ServerConfig.json &&
+sudo systemctl restart jackett
 ```
+
+## 3.00 Download the latest Jackett Server indexers
+Jacket indexers are torrent sites. All the following for download are public indexers. In the event you want to upgrade and overwrite your indexers you can with these instructions. If you use private indexers add them using the Jackett [WebUI](http://192.168.30.113:9117/UI/Dashboard).
+With the Proxmox web interface go to `typhoon-01` > `113 (deluge)` > `>_ Shell` and type the following:
+```
+systemctl stop jackett &&
+sleep 5 &&
+wget -q https://raw.githubusercontent.com/ahuacate/jackett/master/ServerConfig.json -O /home/media/.config/Jackett/ServerConfig.json &&
+chown 1005:1005 /home/media/.config/Jackett/ServerConfig.json &&
+sudo systemctl restart jackett
+```
+
 
