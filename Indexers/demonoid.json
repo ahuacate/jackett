@@ -1,0 +1,41 @@
+[
+  {
+    "id": "sitelink",
+    "type": "inputstring",
+    "name": "Site Link",
+    "value": "https://www.dnoid.to/"
+  },
+  {
+    "id": "cookieheader",
+    "type": "hiddendata",
+    "name": "CookieHeader",
+    "value": ""
+  },
+  {
+    "id": "lasterror",
+    "type": "hiddendata",
+    "name": "LastError",
+    "value": ""
+  },
+  {
+    "id": "category",
+    "type": "inputselect",
+    "name": "Category",
+    "value": "0",
+    "options": {
+      "0": "All",
+      "1": "Applications",
+      "2": "Audio Books",
+      "3": "Books",
+      "4": "Comics",
+      "5": "Games",
+      "6": "Anime",
+      "7": "Miscellaneous",
+      "8": "Movies",
+      "9": "Music",
+      "10": "Music Videos",
+      "11": "Pictures",
+      "12": "TV"
+    }
+  }
+]
