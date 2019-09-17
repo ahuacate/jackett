@@ -31,5 +31,12 @@ But if you want to modify or update your config with the latest from our GitHub 
 The Jackett settings file is named `ServerConfig.json`. In the event you want to upgrade or overwrite your `ServerConfig.json` you can with these instructions. 
 
 With the Proxmox web interface go to `typhoon-01` > `113 (deluge)` > `>_ Shell` and type the following:
-
+```
+systemctl stop jackett &&
+sleep 5 &&
+wget  https://raw.githubusercontent.com/ahuacate/deluge/master/deluge-postprocess.sh -P /home/media/.config/deluge &&
+chmod +rx /home/media/.config/deluge/deluge-postprocess.sh &&
+chown 1005:1005 /home/media/.config/deluge/deluge-postprocess.sh &&
+sudo systemctl restart deluge
+```
 
