@@ -27,27 +27,19 @@ Your Jacket should be ready to go when you installed Jacket as shown instruction
 
 But if you want to modify or update your config with the latest from our GitHub repository read-on. 
 
-## 2.00 Download the latest Jackett Server configuration file
-The Jackett preferences file is named `ServerConfig.json`. In the event you want to upgrade or overwrite your `ServerConfig.json` you can with these instructions. 
+## 2.00 Download the latest Jackett Server configuration file & Indexers
+The Jackett preferences file is named `ServerConfig.json`. Jackett indexers are links torrent sites. In the event you want to upgrade and overwrite your `ServerConfig.json` and Jackett indexers you can with these instructions. If you use private indexers add them using the Jackett [WebUI](http://192.168.30.113:9117/UI/Dashboard).
 
 With the Proxmox web interface go to `typhoon-01` > `113 (deluge)` > `>_ Shell` and type the following:
 ```
-systemctl stop jackett &&
+# Here we update the Jackett Server configuration file
+sudo systemctl stop jackett &&
 sleep 5 &&
 wget -q https://raw.githubusercontent.com/ahuacate/jackett/master/ServerConfig.json -O /home/media/.config/Jackett/ServerConfig.json &&
 chown 1005:1005 /home/media/.config/Jackett/ServerConfig.json &&
+# Here we update the jacket indexers
+rm /home/media/.config/Jackett/Indexers/* &&
+svn checkout https://github.com/ahuacate/jackett/trunk/Indexers /home/media/.config/Jackett/Indexers &&
+chown 1005:1005 {/home/media/.config/Jackett/Indexers/*.json,/home/media/.config/Jackett/Indexers/*.bak} &&
 sudo systemctl restart jackett
 ```
-
-## 3.00 Download the latest Jackett Server indexers
-Jacket indexers are torrent sites. All the following for download are public indexers. In the event you want to upgrade and overwrite your indexers you can with these instructions. If you use private indexers add them using the Jackett [WebUI](http://192.168.30.113:9117/UI/Dashboard).
-With the Proxmox web interface go to `typhoon-01` > `113 (deluge)` > `>_ Shell` and type the following:
-```
-systemctl stop jackett &&
-sleep 5 &&
-wget -q https://raw.githubusercontent.com/ahuacate/jackett/master/ServerConfig.json -O /home/media/.config/Jackett/ServerConfig.json &&
-chown 1005:1005 /home/media/.config/Jackett/ServerConfig.json &&
-sudo systemctl restart jackett
-```
-
-
