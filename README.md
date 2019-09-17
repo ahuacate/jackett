@@ -43,3 +43,11 @@ svn checkout https://github.com/ahuacate/jackett/trunk/Indexers /home/media/.con
 chown 1005:1005 {/home/media/.config/Jackett/Indexers/*.json,/home/media/.config/Jackett/Indexers/*.bak} &&
 sudo systemctl restart jackett
 ```
+
+## 00.00 Patches & Fixes
+All CLI commands performed in the `typhoon-01` > `113 (deluge)` > `>_ Shell` :
+
+**Restart Deluge**
+```
+sudo systemctl restart jackett
+```
