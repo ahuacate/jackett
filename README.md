@@ -14,10 +14,8 @@ Other Prerequisites are:
 - [x] Deluge LXC with Deluge SW installed as per [Deluge LXC - Ubuntu 18.04](https://github.com/ahuacate/proxmox-lxc-media/blob/master/README.md#400-deluge-lxc---ubuntu-1804).
 
 Tasks to be performed are:
-- [ ] 1.00 Configure Deluge Preferences
-- [ ] 2.00 Download the latest Execute Plugin for FileBot deluge-postprocess.sh script
-- [ ] 3.00 Download the latest Label Plugin configuration file
-- [ ] 4.00 Download the latest Autoremoveplus Plugin configuration file
+- [ ] 1.00 Configure Jackett Preferences
+- [ ] 2.00 Download the latest Jackett Server configuration file & Indexers
 - [ ] 00.00 Patches & Fixes
 
 ## 1.00 Configure Jackett Preferences
