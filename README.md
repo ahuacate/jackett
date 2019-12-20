@@ -14,13 +14,12 @@ Other Prerequisites are:
 - [x] Deluge LXC with Deluge SW installed as per [Deluge LXC - Ubuntu 18.04](https://github.com/ahuacate/proxmox-lxc-media/blob/master/README.md#400-deluge-lxc---ubuntu-1804).
 
 Tasks to be performed are:
-- [ ] 1.00 Configure Jackett Preferences
-- [ ] 2.00 Download the latest Jackett Server configuration file & Indexers
-- [ ] 00.00 Patches & Fixes
+- [1.00 Configure Jackett Preferences](#100-configure-jackett-preferences)
+- [2.00 Download the latest Jackett Server configuration file & Indexers](#200-download-the-latest-jackett-server-configuration-file--indexers)
+- [3.00 Add Audiobookbay indexer](#300-add-audiobookbay-indexer)
+- [00.00 Patches & Fixes](#0000-patches--fixes)
 
 ## 1.00 Configure Jackett Preferences
-Jackett is installed on the Deluge LXC container.
-
 Your Jacket should be ready to go when you installed Jacket as shown instructions [HERE](https://github.com/ahuacate/proxmox-lxc-media/blob/master/README.md#500-jackett-lxc---ubuntu-1804). 
 
 But if you want to modify or update your config with the latest from our GitHub repository read-on. 
@@ -29,6 +28,7 @@ But if you want to modify or update your config with the latest from our GitHub 
 The Jackett preferences file is named `ServerConfig.json`. Jackett indexers are links torrent sites. In the event you want to upgrade and overwrite your `ServerConfig.json` and Jackett indexers you can with these instructions. If you use private indexers add them using the Jackett [WebUI](http://192.168.30.113:9117/UI/Dashboard).
 
 With the Proxmox web interface go to `typhoon-01` > `113 (deluge)` > `>_ Shell` and type the following:
+
 ```
 # Here we update the Jackett Server configuration file
 sudo systemctl stop jackett &&
@@ -41,6 +41,9 @@ svn checkout https://github.com/ahuacate/jackett/trunk/Indexers /home/media/.con
 chown 1005:1005 {/home/media/.config/Jackett/Indexers/*.json,/home/media/.config/Jackett/Indexers/*.bak} &&
 sudo systemctl restart jackett
 ```
+
+## 3.00 Add Audiobookbay indexer
+If you are installing LazyLibrarian get a private account at http://audiobookbay.nl and add the indexer to Jackett.
 
 ## 00.00 Patches & Fixes
 All CLI commands performed in the `typhoon-01` > `113 (deluge)` > `>_ Shell` :
